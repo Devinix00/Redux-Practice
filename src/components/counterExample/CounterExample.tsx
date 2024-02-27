@@ -2,7 +2,10 @@ import { useDispatch } from "react-redux";
 import Counter from "../counter/Counter";
 import CounterButton from "../counterButton/CounterButton";
 import styles from "./CounterExample.module.scss";
-import { decrementCount, incrementCount } from "../actions/counterActions";
+import {
+  decrementCount,
+  incrementCount,
+} from "../../redux/actions/counterActions";
 
 function CounterExample(): JSX.Element {
   const dispatch = useDispatch();

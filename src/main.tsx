@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { createStore } from "redux";
-import counter from "./reducers/counter.ts";
+import counter from "./redux/reducers/counter.ts";
 import { Provider } from "react-redux";
 
 const store = createStore(counter);
