@@ -1,0 +1,35 @@
+@import "./breakpoints";
+
+// 반응형 믹스인 - 브레이크포인트 이상
+@mixin respond-above($breakpoint) {
+  // 중단점 변수에서 키로 값을 가져옵니다.
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // 미디어 쿼리에서 사용할 중단점 생성
+    @media (min-width: $breakpoint-value) {
+      @content; // 믹스인 콘텐츠 전달
+    }
+  }
+  // 중단점이 변수에 없을 경우 경고 메시지 출력
+  @else {
+    @warn "Unknown breakpoint: #{$breakpoint}. Please add it to the $breakpoints map in variables.scss.";
+  }
+}
+
+// 반응형 믹스인 - 브레이크포인트 이하
+@mixin respond-below($breakpoint) {
+  // 중단점 변수에서 키로 값을 가져옵니다.
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    // 미디어 쿼리에서 사용할 중단점 생성
+    @media (max-width: $breakpoint-value) {
+      @content; // 믹스인 콘텐츠 전달
+    }
+  }
+  // 중단점이 변수에 없을 경우 경고 메시지 출력
+  @else {
+    @warn "Unknown breakpoint: #{$breakpoint}. Please add it to the $breakpoints map in variables.scss.";
+  }
+}
