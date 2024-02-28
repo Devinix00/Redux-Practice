@@ -9,5 +9,18 @@
     * {
       font-size: 1.6rem;
     }
+
+    .link {
+      color: #00000099;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &.active {
+        text-decoration: underline;
+      }
+    }
   }
 }
