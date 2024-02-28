@@ -1,7 +1,3 @@
-export const incrementCount = () => {
-  return { type: "INCREMENT" };
-};
+export const INCREMENT = "INCREMENT";
 
-export const decrementCount = () => {
-  return { type: "DECREMENT" };
-};
+export const DECREMENT = "DECREMENT";
