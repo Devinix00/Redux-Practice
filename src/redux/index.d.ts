@@ -1,0 +1,3 @@
+interface IRootState {
+  counter: number;
+}
