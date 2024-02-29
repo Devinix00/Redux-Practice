@@ -16,10 +16,10 @@ function ToDo({ toDo }: IProps): JSX.Element {
       {showUpdateForm ? (
         <UpdateToDoForm toDo={toDo} setShowUpdateForm={setShowUpdateForm} />
       ) : (
-        <p className={styles.toDoText}>{toDo.text}</p>
+        <p className={styles.to_do_text}>{toDo.text}</p>
       )}
 
-      <section className={styles.buttonSection}>
+      <section className={styles.button_section}>
         <p className={styles.completed}>{toDo.completed ? "했음" : "안했음"}</p>
         <input type="checkbox" checked={toDo.completed} onChange={toggleToDo} />
         <button

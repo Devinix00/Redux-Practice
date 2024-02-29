@@ -10,7 +10,7 @@ function CounterExample(): JSX.Element {
   return (
     <section className={styles.container}>
       <Counter />
-      <section className={styles.buttonSection}>
+      <section className={styles.button_section}>
         <CounterButton type="+" onClick={() => dispatch({ type: INCREMENT })} />
         <CounterButton type="-" onClick={() => dispatch({ type: DECREMENT })} />
       </section>
