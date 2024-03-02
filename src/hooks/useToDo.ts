@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { DELETE_TODO, TOGGLE_TODO } from "../redux/actions/toDosActions";
 import { useState } from "react";
+import { toDosActions } from "../redux/slices/toDosSlice";
 
 interface IProps {
   toDo: IToDo;
@@ -8,18 +8,22 @@ interface IProps {
 
 function useToDo({ toDo }: IProps) {
   const [showUpdateForm, setShowUpdateForm] = useState<boolean>(false);
-
   const dispatch = useDispatch();
 
   const toggleToDo = () => {
-    dispatch({ type: TOGGLE_TODO, payload: toDo.id });
+    dispatch(toDosActions.toggleToDo(toDo.id));
   };
 
   const deleteToDo = () => {
-    dispatch({ type: DELETE_TODO, payload: toDo.id });
+    dispatch(toDosActions.deleteToDo(toDo.id));
   };
 
-  return { toggleToDo, deleteToDo, showUpdateForm, setShowUpdateForm };
+  return {
+    toggleToDo,
+    deleteToDo,
+    showUpdateForm,
+    setShowUpdateForm,
+  };
 }
 
 export default useToDo;

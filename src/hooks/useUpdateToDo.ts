@@ -1,6 +1,6 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { useDispatch } from "react-redux";
-import { UPDATE_TODO } from "../redux/actions/toDosActions";
+import { toDosActions } from "../redux/slices/toDosSlice";
 
 interface IProps {
   toDo: IToDo;
@@ -16,10 +16,12 @@ function useUpdateToDo({ toDo, setShowUpdateForm }: IProps) {
 
     if (!inputValue) return;
 
-    dispatch({
-      type: UPDATE_TODO,
-      payload: { id: toDo.id, newText: inputValue },
-    });
+    dispatch(
+      toDosActions.updateToDo({
+        id: toDo.id,
+        newText: inputValue,
+      })
+    );
 
     setShowUpdateForm(false);
   };
