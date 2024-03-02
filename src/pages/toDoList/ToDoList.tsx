@@ -1,8 +1,8 @@
 import React from "react";
 import Breadcrumb from "../../components/common/breadcrumb/Breadcrumb";
 import { useSelector } from "react-redux";
-import AddToDoForm from "../../components/addToDoForm/AddToDoForm";
-import ToDo from "../../components/toDo/ToDo";
+import AddToDoForm from "../../components/toDoListPage/addToDoForm/AddToDoForm";
+import ToDo from "../../components/toDoListPage/toDo/ToDo";
 import { RootState } from "../../redux/store/store";
 
 function ToDoList(): JSX.Element {

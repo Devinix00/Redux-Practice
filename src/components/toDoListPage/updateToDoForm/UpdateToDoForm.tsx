@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
-import useUpdateToDo from "../../hooks/useUpdateToDo";
+import useUpdateToDo from "../../../hooks/useUpdateToDo";
 import styles from "./UpdateToDoForm.module.scss";
 
 interface IProps {

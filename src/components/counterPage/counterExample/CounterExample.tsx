@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import Counter from "../counter/Counter";
 import CounterButton from "../counterButton/CounterButton";
 import styles from "./CounterExample.module.scss";
-import { counterActions } from "../../redux/slices/counterSlice";
+import { counterActions } from "../../../redux/slices/counterSlice";
 
 function CounterExample(): JSX.Element {
   const dispatch = useDispatch();

@@ -1,4 +1,4 @@
-import useToDo from "../../hooks/useToDo";
+import useToDo from "../../../hooks/useToDo";
 import UpdateToDoForm from "../updateToDoForm/UpdateToDoForm";
 import styles from "./ToDo.module.scss";
 

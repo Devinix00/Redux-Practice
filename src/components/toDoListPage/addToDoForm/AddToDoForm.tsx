@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import styles from "./AddToDoForm.module.scss";
-import useAddToDos from "../../hooks/useAddToDo";
+import useAddToDos from "../../../hooks/useAddToDo";
 
 function AddToDoForm(): JSX.Element {
   const { inputValue, setInputValue, handleSubmit } = useAddToDos();
