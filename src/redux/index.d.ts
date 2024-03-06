@@ -3,3 +3,8 @@ interface IToDo {
   text: string;
   completed: boolean;
 }
+
+interface IPokemon {
+  name: string;
+  url: string;
+}
