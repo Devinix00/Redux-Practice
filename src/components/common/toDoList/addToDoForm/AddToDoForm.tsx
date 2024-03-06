@@ -1,10 +1,17 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react";
 import styles from "./AddToDoForm.module.scss";
-import useAddToDos from "../../../hooks/useAddToDo";
 
-function AddToDoForm(): JSX.Element {
-  const { inputValue, setInputValue, handleSubmit } = useAddToDos();
+interface IProps {
+  inputValue: string;
+  setInputValue: Dispatch<SetStateAction<string>>;
+  handleSubmit: (e: FormEvent) => void;
+}
 
+function AddToDoForm({
+  inputValue,
+  setInputValue,
+  handleSubmit,
+}: IProps): JSX.Element {
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
       <section>

@@ -1,16 +1,27 @@
 import { FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toDosActions } from "../redux/slices/toDosSlice";
+import { useAddToDoMutation } from "../redux/api/toDosApi";
 
-function useAddToDos() {
+function useAddToDos(type: string) {
   const [inputValue, setInputValue] = useState<string>("");
+  const [addToDo] = useAddToDoMutation();
   const dispatch = useDispatch();
 
-  const handleSubmit = (e: FormEvent): void => {
+  const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
     if (!inputValue) return;
 
-    dispatch(toDosActions.addToDo(inputValue));
+    if (type === "withOutAjax") {
+      dispatch(toDosActions.addToDo(inputValue));
+    } else if (type === "ajax") {
+      try {
+        await addToDo(inputValue).unwrap();
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     setInputValue("");
   };
 

@@ -6,21 +6,28 @@ import classNames from "classnames";
 function Breadcrumb(): JSX.Element {
   const location = useLocation();
 
+  const links = [
+    { path: "/", label: "Counter" },
+    { path: "/to-do-list", label: "To Do List" },
+    { path: "/pokemon-ajax", label: "Pokemon Ajax" },
+    { path: "/to-do-list-ajax", label: "To Do List Ajax" },
+  ];
+
   const getLinkClass = (path: string): string =>
     classNames(styles.link, { [styles.active]: location.pathname === path });
 
   return (
     <div className={styles.container}>
       <Breadcrumbs aria-label="breadcrumb" className={styles.breadcrumbs}>
-        <Link to="/" className={getLinkClass("/")}>
-          Home
-        </Link>
-        <Link to="/to-do-list" className={getLinkClass("/to-do-list")}>
-          To Do List
-        </Link>
-        <Link to="/pokemon-ajax" className={getLinkClass("/pokemon-ajax")}>
-          Pokemon Ajax
-        </Link>
+        {links.map((link) => (
+          <Link
+            key={link.path}
+            to={link.path}
+            className={getLinkClass(link.path)}
+          >
+            {link.label}
+          </Link>
+        ))}
       </Breadcrumbs>
     </div>
   );

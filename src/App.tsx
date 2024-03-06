@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ToDoList from "./pages/toDoList/ToDoList";
 import Counter from "./pages/counter/Counter";
 import PokemonAjax from "./pages/pokemonAjax/PokemonAjax";
+import ToDoListAjax from "./pages/toDoListAjax/ToDoListAjax";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/pokemon-ajax",
     element: <PokemonAjax />,
+  },
+  {
+    path: "/to-do-list-ajax",
+    element: <ToDoListAjax />,
   },
 ]);
 

@@ -1,15 +1,13 @@
 import React from "react";
 import Breadcrumb from "../../components/common/breadcrumb/Breadcrumb";
-import { useSelector } from "react-redux";
 import AddToDoForm from "../../components/common/toDoList/addToDoForm/AddToDoForm";
 import ToDo from "../../components/common/toDoList/toDo/ToDo";
-import { RootState } from "../../redux/store/store";
 import useAddToDos from "../../hooks/useAddToDo";
+import { useGetTodosQuery } from "../../redux/api/toDosApi";
 
-function ToDoList(): JSX.Element {
-  const toDos = useSelector((state: RootState) => state.toDos);
-  const { inputValue, setInputValue, handleSubmit } =
-    useAddToDos("withOutAjax");
+function ToDoListAjax(): JSX.Element {
+  const { data: toDos } = useGetTodosQuery();
+  const { inputValue, setInputValue, handleSubmit } = useAddToDos("ajax");
 
   return (
     <React.Fragment>
@@ -20,12 +18,12 @@ function ToDoList(): JSX.Element {
         handleSubmit={handleSubmit}
       />
       <ul>
-        {toDos?.map((toDo) => (
-          <ToDo key={toDo.id} toDo={toDo} type="withOutAjax" />
+        {toDos?.map((toDo: IToDo) => (
+          <ToDo key={toDo.id} toDo={toDo} type="ajax" />
         ))}
       </ul>
     </React.Fragment>
   );
 }
 
-export default ToDoList;
+export default ToDoListAjax;
