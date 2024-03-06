@@ -18,7 +18,7 @@ function Breadcrumb(): JSX.Element {
         <Link to="/to-do-list" className={getLinkClass("/to-do-list")}>
           To Do List
         </Link>
-        <Link to="/pokemon-ajax" className={getLinkClass("/ajax")}>
+        <Link to="/pokemon-ajax" className={getLinkClass("/pokemon-ajax")}>
           Pokemon Ajax
         </Link>
       </Breadcrumbs>
