@@ -1,0 +1,14 @@
+.container {
+  @mixin commonStyle {
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+  .loading_spinner_container {
+    @include commonStyle();
+  }
+
+  .pokemons_container {
+    @include commonStyle();
+  }
+}

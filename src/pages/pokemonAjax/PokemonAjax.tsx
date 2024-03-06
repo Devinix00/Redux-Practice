@@ -1,21 +1,32 @@
-import React from "react";
+import styles from "./PokemonAjax.module.scss";
 import Breadcrumb from "../../components/common/breadcrumb/Breadcrumb";
 import { useGetPokemonsQuery } from "../../redux/api/pokemonApi";
-import Pokemon from "../../components/ajax/pokemon/Pokemon";
+import Pokemon from "../../components/pokemonAjaxPage/pokemon/Pokemon";
+import LoadingSpinner from "../../components/common/loadingSpinner/LoadingSpinner";
 
 function PokemonAjax() {
-  const { data } = useGetPokemonsQuery({});
+  const { data, isLoading } = useGetPokemonsQuery({});
   const pokemons: IPokemon[] = data?.results;
 
   return (
-    <React.Fragment>
+    <div className={styles.container}>
       <Breadcrumb />
-      <ul style={{ width: "fit-content", margin: "0 auto", marginTop: "2rem" }}>
-        {pokemons?.map((pokemon, i) => (
-          <Pokemon pokemon={pokemon} key={i} />
-        ))}
-      </ul>
-    </React.Fragment>
+      {isLoading ? (
+        <div
+        className={styles.loading_spinner_container}
+        >
+          <LoadingSpinner />
+        </div>
+      ) : (
+        <ul
+          className={styles.pokemons_container}
+        >
+          {pokemons?.map((pokemon, i) => (
+            <Pokemon pokemon={pokemon} key={i} />
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
