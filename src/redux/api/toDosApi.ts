@@ -11,11 +11,11 @@ export const toDosApi = createApi({
     }),
 
     addToDo: builder.mutation({
-      query: (newToDos) => ({
+      query: (newText) => ({
         url: "/toDos",
         method: "POST",
         body: {
-          text: newToDos,
+          text: newText,
           completed: false,
         },
       }),
@@ -35,8 +35,8 @@ export const toDosApi = createApi({
     }),
 
     deleteToDo: builder.mutation<IToDo, void>({
-      query: (toDosId) => ({
-        url: `/toDos/${toDosId}`,
+      query: (id) => ({
+        url: `/toDos/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["toDos"],
