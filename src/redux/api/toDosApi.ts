@@ -34,7 +34,7 @@ export const toDosApi = createApi({
       invalidatesTags: ["toDos"],
     }),
 
-    deleteToDo: builder.mutation({
+    deleteToDo: builder.mutation<IToDo, void>({
       query: (toDosId) => ({
         url: `/toDos/${toDosId}`,
         method: "DELETE",
