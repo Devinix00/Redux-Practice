@@ -19,7 +19,11 @@
 
     .main {
       flex: 1;
+      max-height: calc(60rem - 8rem);
+      overflow-y: auto;
       padding-inline-start: 0;
+      margin: 0;
+      margin-bottom: 2rem;
     }
   }
 }

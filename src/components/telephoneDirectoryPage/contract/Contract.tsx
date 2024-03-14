@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Contract.module.scss";
+import useDeleteContract from "../../../hooks/useDeleteContract";
 
 interface IProps {
   contract: IContract;
@@ -13,9 +14,12 @@ interface IContract {
 }
 
 function Contract({ contract }: IProps) {
+  const deleteContract = useDeleteContract();
+
   return (
     <Link to="" className={styles.link}>
       {contract.name}
+      <button onClick={() => deleteContract(contract.id)}>삭제</button>
     </Link>
   );
 }

@@ -1,37 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const contract: IContract[] = [
-  {
-    id: 1,
-    name: "김범수",
-    number: "01056052258",
-    url: "",
-  },
-  {
-    id: 2,
-    name: "김범수2",
-    number: "01056052258",
-    url: "",
-  },
-  {
-    id: 3,
-    name: "김범수3",
-    number: "01056052258",
-    url: "",
-  },
-  {
-    id: 4,
-    name: "김범수4",
-    number: "01056052258",
-    url: "",
-  },
-  {
-    id: 5,
-    name: "김범수2",
-    number: "01056052258",
-    url: "",
-  },
-];
+const contract: IContract[] = [];
 
 export interface IContract {
   id: number;
@@ -61,9 +30,18 @@ export const telephoneDirectorySlice = createSlice({
       };
       state.push(newContract);
     },
+    deleteContract: (state, action: PayloadAction<number>) => {
+      const index = state.findIndex(
+        (contract) => contract.id === action.payload
+      );
+
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
+    },
   },
 });
 
-export const { addContract } = telephoneDirectorySlice.actions;
+export const { addContract, deleteContract } = telephoneDirectorySlice.actions;
 
 export default telephoneDirectorySlice.reducer;
