@@ -11,6 +11,7 @@ function Breadcrumb(): JSX.Element {
     { path: "/to-do-list", label: "To Do List" },
     { path: "/pokemon-ajax", label: "Pokemon Ajax" },
     { path: "/to-do-list-ajax", label: "To Do List Ajax" },
+    { path: "/telephone-directory", label: "Telephone Directory" },
   ];
 
   const getLinkClass = (path: string): string =>

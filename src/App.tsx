@@ -3,6 +3,7 @@ import ToDoList from "./pages/toDoList/ToDoList";
 import Counter from "./pages/counter/Counter";
 import PokemonAjax from "./pages/pokemonAjax/PokemonAjax";
 import ToDoListAjax from "./pages/toDoListAjax/ToDoListAjax";
+import TelephoneDirectory from "./pages/telephoneDirectory/TelephoneDirectory";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/to-do-list-ajax",
     element: <ToDoListAjax />,
+  },
+  {
+    path: "/telephone-directory",
+    element: <TelephoneDirectory />,
   },
 ]);
 
