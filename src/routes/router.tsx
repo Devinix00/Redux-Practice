@@ -3,8 +3,10 @@ import Counter from "../pages/counter/Counter";
 import ToDoList from "../pages/toDoList/ToDoList";
 import PokemonAjax from "../pages/pokemonAjax/PokemonAjax";
 import ToDoListAjax from "../pages/toDoListAjax/ToDoListAjax";
+import Layout from "./layouts/Layout";
+import TelephoneDirectoryDetail from "../pages/telephoneDirectoryDetail/TelephoneDirectoryDetail";
+import TelephoneDirectoryLayout from "./layouts/telephoneDirectory/TelephoneDirectoryLayout";
 import TelephoneDirectory from "../pages/telephoneDirectory/TelephoneDirectory";
-import Layout from "./Layout";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/telephone-directory",
-        element: <TelephoneDirectory />,
+        element: <TelephoneDirectoryLayout />,
+        children: [
+          {
+            path: "/telephone-directory",
+            element: <TelephoneDirectory />,
+          },
+          {
+            path: "/telephone-directory/:name",
+            element: <TelephoneDirectoryDetail />,
+          },
+        ],
       },
     ],
   },

@@ -17,7 +17,7 @@ function Contract({ contract }: IProps) {
   const deleteContract = useDeleteContract();
 
   return (
-    <Link to="" className={styles.link}>
+    <Link to={contract.url} className={styles.link}>
       {contract.name}
       <button onClick={() => deleteContract(contract.id)}>삭제</button>
     </Link>

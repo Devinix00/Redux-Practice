@@ -12,7 +12,7 @@ const store = configureStore({
     [toDosApi.reducerPath]: toDosApi.reducer,
     counter: counterSlice,
     toDos: toDosSlice,
-    telephoneDirectort: telephoneDirectorySlice,
+    telephoneDirectorty: telephoneDirectorySlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()

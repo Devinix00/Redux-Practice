@@ -1,5 +1,5 @@
 import React from "react";
-import Breadcrumb from "../components/common/breadcrumb/Breadcrumb";
+import Breadcrumb from "../../components/common/breadcrumb/Breadcrumb";
 import { Outlet } from "react-router-dom";
 
 function Layout() {
