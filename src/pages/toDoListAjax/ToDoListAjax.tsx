@@ -1,5 +1,4 @@
 import React from "react";
-import Breadcrumb from "../../components/common/breadcrumb/Breadcrumb";
 import AddToDoForm from "../../components/common/toDoList/addToDoForm/AddToDoForm";
 import ToDo from "../../components/common/toDoList/toDo/ToDo";
 import useAddToDos from "../../hooks/useAddToDo";
@@ -11,7 +10,6 @@ function ToDoListAjax(): JSX.Element {
 
   return (
     <React.Fragment>
-      <Breadcrumb />
       <AddToDoForm
         inputValue={inputValue}
         setInputValue={setInputValue}

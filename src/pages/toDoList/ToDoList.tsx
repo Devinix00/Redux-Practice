@@ -1,5 +1,4 @@
 import React from "react";
-import Breadcrumb from "../../components/common/breadcrumb/Breadcrumb";
 import { useSelector } from "react-redux";
 import AddToDoForm from "../../components/common/toDoList/addToDoForm/AddToDoForm";
 import ToDo from "../../components/common/toDoList/toDo/ToDo";
@@ -13,7 +12,6 @@ function ToDoList(): JSX.Element {
 
   return (
     <React.Fragment>
-      <Breadcrumb />
       <AddToDoForm
         inputValue={inputValue}
         setInputValue={setInputValue}
