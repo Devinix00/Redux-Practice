@@ -1,0 +1,15 @@
+.link {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid #d9d9d9;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  padding: 2rem 0;
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgb(223, 223, 223);
+  }
+}

@@ -4,6 +4,7 @@ import toDosSlice from "../slices/toDosSlice";
 import { pokemonApi } from "../api/pokemonApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { toDosApi } from "../api/toDosApi";
+import telephoneDirectorySlice from "../slices/telephoneDirectorySlice";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     [toDosApi.reducerPath]: toDosApi.reducer,
     counter: counterSlice,
     toDos: toDosSlice,
+    telephoneDirectort: telephoneDirectorySlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
