@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             element: <TelephoneDirectory />,
           },
           {
-            path: "/telephone-directory/:name",
+            path: "/telephone-directory/:id",
             element: <TelephoneDirectoryDetail />,
           },
         ],

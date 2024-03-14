@@ -26,10 +26,11 @@ export const telephoneDirectorySlice = createSlice({
         id: Date.now(),
         name: action.payload.name,
         number: action.payload.number,
-        url: action.payload.name,
+        url: Date.now().toString(),
       };
       state.push(newContract);
     },
+
     deleteContract: (state, action: PayloadAction<number>) => {
       const index = state.findIndex(
         (contract) => contract.id === action.payload

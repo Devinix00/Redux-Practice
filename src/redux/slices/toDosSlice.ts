@@ -23,6 +23,7 @@ export const toDosSlice = createSlice({
       state.push(newTodo);
       localStorage.setItem("toDos", JSON.stringify(state));
     },
+
     toggleToDo: (state, action: PayloadAction<number>) => {
       const toDo = state.find((toDo) => toDo.id === action.payload);
       if (toDo) {
@@ -30,6 +31,7 @@ export const toDosSlice = createSlice({
         localStorage.setItem("toDos", JSON.stringify(state));
       }
     },
+
     deleteToDo: (state, action: PayloadAction<number>) => {
       const index = state.findIndex((toDo) => toDo.id === action.payload);
       if (index !== -1) {
@@ -37,6 +39,7 @@ export const toDosSlice = createSlice({
         localStorage.setItem("toDos", JSON.stringify(state));
       }
     },
+
     updateToDo: (
       state,
       action: PayloadAction<{ id: number; newText: string }>
