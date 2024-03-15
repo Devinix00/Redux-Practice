@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Contract.module.scss";
 import useDeleteContract from "../../../hooks/useDeleteContract";
 
@@ -14,13 +14,21 @@ interface IContract {
 }
 
 function Contract({ contract }: IProps) {
+  const navigate = useNavigate();
   const deleteContract = useDeleteContract();
 
   return (
-    <Link to={contract.url} className={styles.link}>
+    <div onClick={() => navigate(contract.url)} className={styles.link}>
       {contract.name}
-      <button onClick={() => deleteContract(contract.id)}>삭제</button>
-    </Link>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteContract(contract.id);
+        }}
+      >
+        삭제
+      </button>
+    </div>
   );
 }
 

@@ -41,6 +41,26 @@ export const telephoneDirectorySlice = createSlice({
         state.splice(index, 1);
       }
     },
+
+    updateContract: (
+      state,
+      action: PayloadAction<{
+        id: number | undefined;
+        type: "name" | "number";
+        content: string;
+      }>
+    ) => {
+      const contract = state.find(
+        (contract) => contract.id === action.payload.id
+      );
+
+      if (!contract) return;
+      if (action.payload.type === "name") {
+        contract.name = action.payload.content;
+      } else if (action.payload.type === "number") {
+        contract.number = action.payload.content;
+      }
+    },
   },
 });
 
@@ -49,6 +69,7 @@ export const selectContracts = createSelector(
   (data) => data.telephoneDirectory
 );
 
-export const { addContract, deleteContract } = telephoneDirectorySlice.actions;
+export const { addContract, deleteContract, updateContract } =
+  telephoneDirectorySlice.actions;
 
 export default telephoneDirectorySlice.reducer;

@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addContract } from "../redux/slices/telephoneDirectorySlice";
+import validateNumberInput from "../utils/validateNumberInput";
 
 function useAddContract() {
   const [inputValue, setInputValue] = useState({
@@ -17,8 +18,7 @@ function useAddContract() {
     const { name, value } = e.target;
 
     if (type === "number") {
-      const regex = /^\d*$/;
-      if (regex.test(value)) {
+      if (validateNumberInput(value)) {
         setInputValue((prev) => ({
           ...prev,
           [name]: value,
@@ -31,7 +31,6 @@ function useAddContract() {
       }));
     }
   };
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const { name, number } = inputValue;
