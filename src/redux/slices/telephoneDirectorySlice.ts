@@ -8,7 +8,11 @@ export interface IContract {
   name: string;
   number: string;
   url: string;
+  imageUrl: string;
 }
+
+const initialImageUrl =
+  "https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg";
 
 const initialState: IContract[] = contract;
 
@@ -28,6 +32,7 @@ export const telephoneDirectorySlice = createSlice({
         name: action.payload.name,
         number: action.payload.number,
         url: Date.now().toString(),
+        imageUrl: initialImageUrl,
       };
       state.push(newContract);
     },
@@ -61,6 +66,27 @@ export const telephoneDirectorySlice = createSlice({
         contract.number = action.payload.content;
       }
     },
+
+    updateContractImage: (
+      state,
+      action: PayloadAction<{
+        id: number | undefined;
+        imageUrl: string;
+      }>
+    ) => {
+      const contract = state.find(
+        (contract) => contract.id === action.payload.id
+      );
+
+      if (!contract) return;
+      contract.imageUrl = action.payload.imageUrl;
+    },
+
+    deleteContractImage: (state, action: PayloadAction<number | undefined>) => {
+      const contract = state.find((contract) => contract.id === action.payload);
+      if (!contract) return;
+      contract.imageUrl = initialImageUrl;
+    },
   },
 });
 
@@ -69,7 +95,12 @@ export const selectContracts = createSelector(
   (data) => data.telephoneDirectory
 );
 
-export const { addContract, deleteContract, updateContract } =
-  telephoneDirectorySlice.actions;
+export const {
+  addContract,
+  deleteContract,
+  updateContract,
+  updateContractImage,
+  deleteContractImage,
+} = telephoneDirectorySlice.actions;
 
 export default telephoneDirectorySlice.reducer;

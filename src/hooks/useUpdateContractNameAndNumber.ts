@@ -28,6 +28,7 @@ function useUpdateContractNameAndNumber() {
     id: number | undefined
   ) => {
     e.preventDefault();
+    if (!inputValue) return alert("수정하실 내용을 입력해주세요.");
 
     dispatch(
       updateContract({

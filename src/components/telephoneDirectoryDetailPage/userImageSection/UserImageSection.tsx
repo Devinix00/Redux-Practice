@@ -3,7 +3,7 @@ import useDeleteContract from "../../../hooks/useDeleteContract";
 import styles from "./UserImageSection.module.scss";
 import React from "react";
 import { IContract } from "../../../redux/slices/telephoneDirectorySlice";
-import useUploadImage from "../../../hooks/useUploadImage";
+import useContractImage from "../../../hooks/useUploadImage";
 
 interface IProps {
   userData: IContract | undefined;
@@ -14,15 +14,12 @@ function UserImageSection({ userData }: IProps) {
   const navigate = useNavigate();
   const {
     imageInputRef,
-    previewUrl,
     handleClickImageUploader,
     handleFileChange,
     handleDeleteImage,
-  } = useUploadImage();
+  } = useContractImage();
 
-  const src = previewUrl
-    ? `${previewUrl}`
-    : "https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg";
+  const src = userData?.imageUrl as string;
 
   return (
     <React.Fragment>
@@ -40,7 +37,7 @@ function UserImageSection({ userData }: IProps) {
       <img src={src} alt={userData?.name} className={styles.user_image} />
       <input
         ref={imageInputRef}
-        onChange={handleFileChange}
+        onChange={(e) => handleFileChange(e, userData?.id)}
         type="file"
         className={styles.file_input}
       />
@@ -52,7 +49,7 @@ function UserImageSection({ userData }: IProps) {
           이미지 수정
         </button>
         <button
-          onClick={handleDeleteImage}
+          onClick={() => handleDeleteImage(userData?.id)}
           className={styles.delete_image_button}
         >
           이미지 삭제
