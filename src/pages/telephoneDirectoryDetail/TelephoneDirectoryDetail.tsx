@@ -1,19 +1,16 @@
 import styles from "./TelephoneDirectoryDetail.module.scss";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { RootState } from "../../redux/store/store";
 import { useRef } from "react";
 import useDeleteContract from "../../hooks/useDeleteContract";
+import { selectContracts } from "../../redux/slices/telephoneDirectorySlice";
 
 function TelephoneDirectoryDetail() {
   const inputRef = useRef<HTMLInputElement>(null);
   const { id } = useParams();
   const navigate = useNavigate();
-  const contracts = useSelector(
-    (state: RootState) => state.telephoneDirectorty
-  );
+  const contracts = useSelector(selectContracts);
   const deleteContract = useDeleteContract();
-
   const userData = contracts?.find((contract) => contract.id.toString() === id);
 
   return (

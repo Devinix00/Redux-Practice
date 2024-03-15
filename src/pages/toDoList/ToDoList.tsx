@@ -2,11 +2,11 @@ import React from "react";
 import { useSelector } from "react-redux";
 import AddToDoForm from "../../components/common/toDoList/addToDoForm/AddToDoForm";
 import ToDo from "../../components/common/toDoList/toDo/ToDo";
-import { RootState } from "../../redux/store/store";
 import useAddToDos from "../../hooks/useAddToDo";
+import { selectTodos } from "../../redux/slices/toDosSlice";
 
 function ToDoList(): JSX.Element {
-  const toDos = useSelector((state: RootState) => state.toDos);
+  const toDos = useSelector(selectTodos);
   const { inputValue, setInputValue, handleSubmit } =
     useAddToDos("withOutAjax");
 

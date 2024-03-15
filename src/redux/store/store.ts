@@ -1,27 +1,54 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import {
+  persistReducer,
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import counterSlice from "../slices/counterSlice";
 import toDosSlice from "../slices/toDosSlice";
-import { pokemonApi } from "../api/pokemonApi";
-import { setupListeners } from "@reduxjs/toolkit/query";
-import { toDosApi } from "../api/toDosApi";
 import telephoneDirectorySlice from "../slices/telephoneDirectorySlice";
+import { pokemonApi } from "../api/pokemonApi";
+import { toDosApi } from "../api/toDosApi";
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const rootReducer = combineReducers({
+  counter: counterSlice,
+  toDos: toDosSlice,
+  telephoneDirectory: telephoneDirectorySlice,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: {
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     [toDosApi.reducerPath]: toDosApi.reducer,
     counter: counterSlice,
-    toDos: toDosSlice,
-    telephoneDirectorty: telephoneDirectorySlice,
+    toDos: persistedReducer,
+    telephoneDirectory: persistedReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    })
       .concat(pokemonApi.middleware)
       .concat(toDosApi.middleware),
 });
 
+export const persistor = persistStore(store);
+
 export type RootState = ReturnType<typeof store.getState>;
 
 export default store;
-
-setupListeners(store.dispatch);

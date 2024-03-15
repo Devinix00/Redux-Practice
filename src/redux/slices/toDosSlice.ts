@@ -1,14 +1,7 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store/store";
 
-const loadToDosFromLocalStorage = (): IToDo[] => {
-  const toDos = localStorage.getItem("toDos");
-  if (toDos) {
-    return JSON.parse(toDos);
-  }
-  return [];
-};
-
-const initialState: IToDo[] = loadToDosFromLocalStorage();
+const initialState: IToDo[] = [];
 
 export const toDosSlice = createSlice({
   name: "toDos",
@@ -21,14 +14,12 @@ export const toDosSlice = createSlice({
         completed: false,
       };
       state.push(newTodo);
-      localStorage.setItem("toDos", JSON.stringify(state));
     },
 
     toggleToDo: (state, action: PayloadAction<number>) => {
       const toDo = state.find((toDo) => toDo.id === action.payload);
       if (toDo) {
         toDo.completed = !toDo.completed;
-        localStorage.setItem("toDos", JSON.stringify(state));
       }
     },
 
@@ -36,7 +27,6 @@ export const toDosSlice = createSlice({
       const index = state.findIndex((toDo) => toDo.id === action.payload);
       if (index !== -1) {
         state.splice(index, 1);
-        localStorage.setItem("toDos", JSON.stringify(state));
       }
     },
 
@@ -47,11 +37,15 @@ export const toDosSlice = createSlice({
       const toDo = state.find((toDo) => toDo.id === action.payload.id);
       if (toDo) {
         toDo.text = action.payload.newText;
-        localStorage.setItem("toDos", JSON.stringify(state));
       }
     },
   },
 });
+
+export const selectTodos = createSelector(
+  (state: RootState) => state.toDos,
+  (data) => data.toDos
+);
 
 export const toDosActions = toDosSlice.actions;
 

@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../store/store";
 
 const contract: IContract[] = [];
 
@@ -42,6 +43,11 @@ export const telephoneDirectorySlice = createSlice({
     },
   },
 });
+
+export const selectContracts = createSelector(
+  (state: RootState) => state.telephoneDirectory,
+  (data) => data.telephoneDirectory
+);
 
 export const { addContract, deleteContract } = telephoneDirectorySlice.actions;
 

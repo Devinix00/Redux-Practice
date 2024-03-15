@@ -2,13 +2,11 @@ import { useSelector } from "react-redux";
 import AddContactFrom from "../../components/telephoneDirectoryPage/addContactFrom/AddContactFrom";
 import Contract from "../../components/telephoneDirectoryPage/contract/Contract";
 import styles from "./TelephoneDirectory.module.scss";
-import { RootState } from "../../redux/store/store";
 import React from "react";
+import { selectContracts } from "../../redux/slices/telephoneDirectorySlice";
 
 function TelephoneDirectory() {
-  const contracts = useSelector(
-    (state: RootState) => state.telephoneDirectorty
-  );
+  const contracts = useSelector(selectContracts);
 
   return (
     <React.Fragment>
