@@ -17,6 +17,7 @@ function UserImageSection({ userData }: IProps) {
     previewUrl,
     handleClickImageUploader,
     handleFileChange,
+    handleDeleteImage,
   } = useUploadImage();
 
   const src = previewUrl
@@ -50,7 +51,12 @@ function UserImageSection({ userData }: IProps) {
         >
           이미지 수정
         </button>
-        <button className={styles.delete_image_button}>이미지 삭제</button>
+        <button
+          onClick={handleDeleteImage}
+          className={styles.delete_image_button}
+        >
+          이미지 삭제
+        </button>
       </section>
     </React.Fragment>
   );

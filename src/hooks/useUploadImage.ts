@@ -22,11 +22,17 @@ function useUploadImage() {
     imageInputRef.current?.click();
   };
 
+  const handleDeleteImage = () => {
+    setImageFile(null);
+    setPreviewUrl(null);
+  };
+
   return {
     imageInputRef,
     handleClickImageUploader,
     handleFileChange,
     previewUrl,
+    handleDeleteImage,
   };
 }
 
