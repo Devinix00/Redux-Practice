@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import useDeleteContract from "../../../hooks/useDeleteContract";
 import styles from "./UserImageSection.module.scss";
-import React, { useRef } from "react";
+import React from "react";
 import { IContract } from "../../../redux/slices/telephoneDirectorySlice";
+import useUploadImage from "../../../hooks/useUploadImage";
 
 interface IProps {
   userData: IContract | undefined;
@@ -11,7 +12,16 @@ interface IProps {
 function UserImageSection({ userData }: IProps) {
   const deleteContract = useDeleteContract();
   const navigate = useNavigate();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const {
+    imageInputRef,
+    previewUrl,
+    handleClickImageUploader,
+    handleFileChange,
+  } = useUploadImage();
+
+  const src = previewUrl
+    ? `${previewUrl}`
+    : "https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg";
 
   return (
     <React.Fragment>
@@ -25,17 +35,17 @@ function UserImageSection({ userData }: IProps) {
           navigate("/telephone-directory");
         }}
       />
-      <img
-        src="https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg"
-        alt={userData?.name}
-        className={styles.user_image}
+
+      <img src={src} alt={userData?.name} className={styles.user_image} />
+      <input
+        ref={imageInputRef}
+        onChange={handleFileChange}
+        type="file"
+        className={styles.file_input}
       />
-      <input ref={inputRef} type="file" className={styles.file_input} />
       <section className={styles.button_section}>
         <button
-          onClick={() => {
-            inputRef.current?.click();
-          }}
+          onClick={handleClickImageUploader}
           className={styles.upload_image_button}
         >
           이미지 수정
