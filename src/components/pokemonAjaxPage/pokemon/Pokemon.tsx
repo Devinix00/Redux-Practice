@@ -1,3 +1,4 @@
+import styles from "./Pokemon.module.scss";
 import { useGetPokemonDetailsQuery } from "../../../redux/api/pokemonApi";
 
 interface IProps {
@@ -10,7 +11,7 @@ function Pokemon({ pokemon }: IProps) {
   const pokemonName = pokemon?.name;
 
   return (
-    <li>
+    <li className={styles.container}>
       <img src={pokemonImageSrc} alt={pokemon.name} />
       <h2>{pokemonName}</h2>
     </li>
