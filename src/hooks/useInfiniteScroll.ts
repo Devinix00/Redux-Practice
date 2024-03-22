@@ -11,16 +11,20 @@ const usePokemonLoader = () => {
   } = useGetPokemonsQuery({ page });
   const loader = useRef<HTMLDivElement | null>(null);
 
+  const observerOptions = {
+    rootMargin: "50px",
+  };
+
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    if (entries[0].isIntersecting) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  };
+
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setPage((prevPage) => prevPage + 1);
-        }
-      },
-      {
-        rootMargin: "50px",
-      }
+      observerCallback,
+      observerOptions
     );
 
     const currentLoader = loader.current;
