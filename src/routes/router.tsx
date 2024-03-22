@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: "",
         element: <Counter />,
       },
       {
@@ -34,11 +34,11 @@ const router = createBrowserRouter([
         element: <TelephoneDirectoryLayout />,
         children: [
           {
-            path: "/telephone-directory",
+            path: "",
             element: <TelephoneDirectory />,
           },
           {
-            path: "/telephone-directory/:id",
+            path: ":id",
             element: <TelephoneDirectoryDetail />,
           },
         ],
