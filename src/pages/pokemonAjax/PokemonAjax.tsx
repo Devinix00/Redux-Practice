@@ -10,15 +10,11 @@ function PokemonAjax() {
   return (
     <div className={styles.container}>
       {isLoading ? (
-        <div
-        className={styles.loading_spinner_container}
-        >
+        <div className={styles.loading_spinner_container}>
           <LoadingSpinner />
         </div>
       ) : (
-        <ul
-          className={styles.pokemons_container}
-        >
+        <ul className={styles.pokemons_container}>
           {pokemons?.map((pokemon, i) => (
             <Pokemon pokemon={pokemon} key={i} />
           ))}

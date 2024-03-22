@@ -10,5 +10,6 @@
 
   .pokemons_container {
     @include commonStyle();
+    list-style-type: none;
   }
 }
