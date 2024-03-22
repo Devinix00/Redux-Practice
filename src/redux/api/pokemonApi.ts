@@ -10,7 +10,14 @@ export const pokemonApi = createApi({
     getPokemonDetails: builder.query({
       query: (name) => `pokemon/${name}`,
     }),
+    getPokemonDetailInfo: builder.query({
+      query: (id) => `pokemon/${id}`,
+    }),
   }),
 });
 
-export const { useGetPokemonsQuery, useGetPokemonDetailsQuery } = pokemonApi;
+export const {
+  useGetPokemonsQuery,
+  useGetPokemonDetailsQuery,
+  useGetPokemonDetailInfoQuery,
+} = pokemonApi;

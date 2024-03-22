@@ -7,6 +7,7 @@ import Layout from "./layouts/Layout";
 import TelephoneDirectoryDetail from "../pages/telephoneDirectoryDetail/TelephoneDirectoryDetail";
 import TelephoneDirectoryLayout from "./layouts/telephoneDirectory/TelephoneDirectoryLayout";
 import TelephoneDirectory from "../pages/telephoneDirectory/TelephoneDirectory";
+import PokemonAjaxDetail from "../pages/pokemonAjaxDetail/PokemonAjaxDetail";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/pokemon-ajax",
         element: <PokemonAjax />,
+      },
+      {
+        path: "/pokemon-ajax/:id",
+        element: <PokemonAjaxDetail />,
       },
       {
         path: "/to-do-list-ajax",

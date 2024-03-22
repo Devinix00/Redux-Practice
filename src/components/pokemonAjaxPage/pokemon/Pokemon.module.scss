@@ -4,6 +4,15 @@
   justify-content: center;
   align-items: center;
 
+  .link {
+    text-align: center;
+    text-decoration: none;
+
+    &:active {
+      color: #0000ee;
+    }
+  }
+
   .pokemon_name {
     width: fit-content;
     font-size: 1.6rem;

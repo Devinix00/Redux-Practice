@@ -1,5 +1,6 @@
 import styles from "./Pokemon.module.scss";
 import { useGetPokemonDetailsQuery } from "../../../redux/api/pokemonApi";
+import { Link } from "react-router-dom";
 
 interface IProps {
   pokemon: IPokemon;
@@ -12,8 +13,10 @@ function Pokemon({ pokemon }: IProps) {
 
   return (
     <li className={styles.container}>
-      <img src={pokemonImageSrc} alt={pokemon.name} />
-      <h2>{pokemonName}</h2>
+      <Link to={`${pokemonDetails?.id}`} className={styles.link}>
+        <img src={pokemonImageSrc} alt={pokemon.name} />
+        <h2>{pokemonName}</h2>
+      </Link>
     </li>
   );
 }

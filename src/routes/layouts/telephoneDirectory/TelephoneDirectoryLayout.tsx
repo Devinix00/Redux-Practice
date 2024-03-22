@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import styles from "./TelephoneDirectory.module.scss";
+import styles from "./TelephoneDirectoryLayout.module.scss";
 
 function TelephoneDirectoryLayout() {
   return (
