@@ -1,23 +1,23 @@
 import styles from "./PokemonAjax.module.scss";
-import { useGetPokemonsQuery } from "../../redux/api/pokemonApi";
 import Pokemon from "../../components/pokemonAjaxPage/pokemon/Pokemon";
 import LoadingSpinner from "../../components/common/loadingSpinner/LoadingSpinner";
+import usePokemonLoader from "../../hooks/useInfiniteScroll";
 
 function PokemonAjax() {
-  const { data, isLoading } = useGetPokemonsQuery({});
-  const pokemons: IPokemon[] = data?.results;
+  const { pokemons, isLoading, isFetching, loader } = usePokemonLoader();
 
   return (
     <div className={styles.container}>
-      {isLoading ? (
+      {isLoading && !isFetching ? (
         <div className={styles.loading_spinner_container}>
           <LoadingSpinner />
         </div>
       ) : (
         <ul className={styles.pokemons_container}>
-          {pokemons?.map((pokemon, i) => (
-            <Pokemon pokemon={pokemon} key={i} />
+          {pokemons.map((pokemon, index) => (
+            <Pokemon pokemon={pokemon} key={index} />
           ))}
+          <div ref={loader} />
         </ul>
       )}
     </div>
