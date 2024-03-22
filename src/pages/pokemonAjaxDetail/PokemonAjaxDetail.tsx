@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 function PokemonAjaxDetail() {
   const { id } = useParams();
   const { data: pokemonDetail, isLoading } = useGetPokemonDetailInfoQuery(id);
-  console.log(pokemonDetail);
+
   const pokemonImageSrc = pokemonDetail?.sprites.front_default;
   const pokemonName = pokemonDetail?.name;
 
