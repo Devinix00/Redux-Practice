@@ -1,7 +1,7 @@
 import styles from "./PokemonAjax.module.scss";
 import Pokemon from "../../components/pokemonAjaxPage/pokemon/Pokemon";
 import LoadingSpinner from "../../components/common/loadingSpinner/LoadingSpinner";
-import usePokemonLoader from "../../hooks/useInfiniteScroll";
+import usePokemonLoader from "../../hooks/usePokemonLoader";
 
 function PokemonAjax() {
   const { pokemons, isLoading, isFetching, loader } = usePokemonLoader();

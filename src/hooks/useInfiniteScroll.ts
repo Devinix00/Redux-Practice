@@ -1,16 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-import { useGetPokemonsQuery } from "../redux/api/pokemonApi";
+import { Dispatch, MutableRefObject, SetStateAction, useEffect } from "react";
 
-const usePokemonLoader = () => {
-  const [page, setPage] = useState(1);
-  const [pokemons, setPokemons] = useState<IPokemon[]>([]);
-  const {
-    data: pokemonsData,
-    isLoading,
-    isFetching,
-  } = useGetPokemonsQuery({ page });
-  const loader = useRef<HTMLDivElement | null>(null);
+interface IProps {
+  setPage: Dispatch<SetStateAction<number>>;
+  loader: MutableRefObject<HTMLDivElement | null>;
+}
 
+function useInfiniteScroll({ setPage, loader }: IProps) {
   useEffect(() => {
     const observerOptions = {
       rootMargin: "50px",
@@ -37,15 +32,7 @@ const usePokemonLoader = () => {
         observer.unobserve(currentLoader);
       }
     };
-  }, []);
+  }, [loader, setPage]);
+}
 
-  useEffect(() => {
-    if (pokemonsData?.results.length) {
-      setPokemons((prevPokemons) => [...prevPokemons, ...pokemonsData.results]);
-    }
-  }, [pokemonsData]);
-
-  return { pokemons, isLoading, isFetching, loader };
-};
-
-export default usePokemonLoader;
+export default useInfiniteScroll;
