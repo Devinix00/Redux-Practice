@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9d9d9;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #d9d9d9;
+  }
+
+  * {
+    font-size: 1.6rem;
+  }
+}

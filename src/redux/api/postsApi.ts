@@ -5,7 +5,7 @@ export const postsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080" }),
   tagTypes: ["posts"],
   endpoints: (builder) => ({
-    getPosts: builder.query({
+    getPosts: builder.query<IPost[], void>({
       query: () => "/posts",
       providesTags: ["posts"],
     }),

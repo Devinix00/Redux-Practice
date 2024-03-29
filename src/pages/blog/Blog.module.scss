@@ -1,0 +1,18 @@
+.container {
+  overflow-y: auto;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+  }
+
+  .posts {
+    list-style-type: none;
+    padding: 0;
+  }
+}

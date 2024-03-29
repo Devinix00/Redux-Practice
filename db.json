@@ -1,4 +1,23 @@
 {
   "toDos": [],
-  "posts": []
+  "posts": [
+    {
+      "id": 1,
+      "name": "김범수",
+      "title": "React",
+      "content": "Javascript 라이브러리"
+    },
+    {
+      "id": 2,
+      "name": "김범수",
+      "title": "React",
+      "content": "Javascript 라이브러리"
+    },
+    {
+      "id": 3,
+      "name": "김범수",
+      "title": "React",
+      "content": "Javascript 라이브러리"
+    }
+  ]
 }

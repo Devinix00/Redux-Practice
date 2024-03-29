@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+
+  .inner {
+    margin: 0 auto;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+    height: 60rem;
+    box-shadow: 0 0 5px 5px rgb(226, 226, 226);
+    border-radius: 1rem;
+    padding: 4rem;
+  }
+}
