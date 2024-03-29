@@ -6,6 +6,7 @@ import toDosSlice from "../slices/toDosSlice";
 import telephoneDirectorySlice from "../slices/telephoneDirectorySlice";
 import { pokemonApi } from "../api/pokemonApi";
 import { toDosApi } from "../api/toDosApi";
+import { postsApi } from "../api/postsApi";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const store = configureStore({
   reducer: {
     [pokemonApi.reducerPath]: pokemonApi.reducer,
     [toDosApi.reducerPath]: toDosApi.reducer,
+    [postsApi.reducerPath]: postsApi.reducer,
     counter: counterSlice,
     toDos: persistedReducer,
     telephoneDirectory: persistedReducer,
@@ -33,7 +35,8 @@ const store = configureStore({
       serializableCheck: false,
     })
       .concat(pokemonApi.middleware)
-      .concat(toDosApi.middleware),
+      .concat(toDosApi.middleware)
+      .concat(postsApi.middleware),
 });
 
 export const persistor = persistStore(store);
