@@ -10,6 +10,7 @@ import TelephoneDirectory from "../pages/telephoneDirectory/TelephoneDirectory";
 import PokemonAjaxDetail from "../pages/pokemonAjaxDetail/PokemonAjaxDetail";
 import Blog from "../pages/blog/Blog";
 import BlogLayout from "./layouts/blogLayout/BlogLayout";
+import BlogDetail from "../pages/blogDetail/BlogDetail";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
           {
             path: "",
             element: <Blog />,
+          },
+          {
+            path: ":id",
+            element: <BlogDetail />,
           },
         ],
       },

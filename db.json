@@ -2,22 +2,28 @@
   "toDos": [],
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "name": "김범수",
       "title": "React",
       "content": "Javascript 라이브러리"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "김범수",
       "title": "React",
       "content": "Javascript 라이브러리"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "김범수",
       "title": "React",
       "content": "Javascript 라이브러리"
+    },
+    {
+      "id": "4",
+      "name": "김범수",
+      "title": "Next.Js",
+      "content": "React 기반 SSR 프레임 워크"
     }
   ]
 }

@@ -4,6 +4,7 @@ import styles from "./Blog.module.scss";
 
 function Blog() {
   const { data: posts } = useGetPostsQuery();
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -13,7 +14,7 @@ function Blog() {
 
       <ul className={styles.posts}>
         {posts?.map((post) => (
-          <Post post={post} />
+          <Post post={post} key={post.id} />
         ))}
       </ul>
     </div>

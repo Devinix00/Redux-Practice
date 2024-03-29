@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./Post.module.scss";
 
 interface IProps {
@@ -5,8 +6,15 @@ interface IProps {
 }
 
 function Post({ post }: IProps) {
+  const navigate = useNavigate();
+
   return (
-    <li className={styles.link}>
+    <li
+      onClick={() => {
+        navigate(post.id);
+      }}
+      className={styles.link}
+    >
       <p>{post.title}</p>
       <p>{post.name}</p>
     </li>

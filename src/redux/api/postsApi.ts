@@ -9,7 +9,11 @@ export const postsApi = createApi({
       query: () => "/posts",
       providesTags: ["posts"],
     }),
+    getIndividualPost: builder.query<IPost, string | undefined>({
+      query: (id) => `/posts/${id}`,
+      providesTags: ["posts"],
+    }),
   }),
 });
 
-export const { useGetPostsQuery } = postsApi;
+export const { useGetPostsQuery, useGetIndividualPostQuery } = postsApi;
