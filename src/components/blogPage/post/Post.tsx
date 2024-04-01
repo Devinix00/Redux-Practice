@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./Post.module.scss";
+import { useDeletePostMutation } from "../../../redux/api/postsApi";
 
 interface IProps {
   post: IPost;
@@ -7,6 +8,7 @@ interface IProps {
 
 function Post({ post }: IProps) {
   const navigate = useNavigate();
+  const [deletePost] = useDeletePostMutation();
 
   return (
     <li
@@ -16,7 +18,14 @@ function Post({ post }: IProps) {
       className={styles.link}
     >
       <p>{post.title}</p>
-      <p>{post.name}</p>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          deletePost(post.id);
+        }}
+      >
+        삭제
+      </button>
     </li>
   );
 }
