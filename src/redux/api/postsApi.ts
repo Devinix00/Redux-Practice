@@ -13,7 +13,23 @@ export const postsApi = createApi({
       query: (id) => `/posts/${id}`,
       providesTags: ["posts"],
     }),
+
+    addPost: builder.mutation({
+      query: ({ title, content }) => ({
+        url: "/posts",
+        method: "POST",
+        body: {
+          title,
+          content,
+        },
+      }),
+      invalidatesTags: ["posts"],
+    }),
   }),
 });
 
-export const { useGetPostsQuery, useGetIndividualPostQuery } = postsApi;
+export const {
+  useGetPostsQuery,
+  useGetIndividualPostQuery,
+  useAddPostMutation,
+} = postsApi;
